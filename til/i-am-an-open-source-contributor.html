@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TIL: I am an open-source contributor — Beast Hacker</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <script data-goatcounter="https://beasthacker.goatcounter.com/count"
+            async src="https://gc.zgo.at/count.js"></script>
+  </head>
+
+  <body>
+    <h1>TIL: I am an open-source contributor</h1>
+    <p><time datetime="2025-12-31">December 31, 2025</time></p>
+
+    <hr>
+
+    <p>
+      I’m currently learning Racket by working my way through <em><a href="https://htdp.org">How to Design Programs</a></em>.
+    </p>
+
+    <p>
+      I am not an expert programmer. In fact, I am a serial language-hopper who, in 2025 alone, has dabbled in Python, Elixir, Common Lisp, Rust, and now Racket.
+      My skills are probably still on the lower-left slope of Dunning–Kruger. But while my programming experience is shallow, my tutorial experience is deep.
+      I’ve explored everything from <a href="https://automatetheboringstuff.com/">Automating the Boring Stuff</a> to <a href="https://rustlings.rust-lang.org/">Rustlings</a>. So I don't think I'm totally deluded in calling <em>How to Design Programs</em> one of the best beginner resources ever.
+    </p>
+
+    <p>
+      It spans ~800 pages of clear, well-structured lessons, with exercises that hit the sweet spot: challenging but not discouraging.
+      It has fun libraries that allow you to mess with graphics and create little games almost immediately.
+      It comes paired with DrRacket, a distraction-free IDE that (while not exactly Neovim) lets you focus on the language rather than the tooling. And oh, by the way, it's all free.
+    </p>
+
+    <p>
+      About 100 pages in, I started to feel a weird moral obligation to give something back.
+    </p>
+
+    <p>
+      So I learned some GitHub basics, opened the Racket org's repos, and went bug hunting. I was looking to contribute something modest,
+      maybe a patch to Racket's thread scheduler to stop it from triggering pinsyscall violations on my Luna-88k.
+      But I stumbled upon something far more insidious, which luckily I was equipped to handle.
+      (See <a href="https://github.com/racket/htdp/pull/251/commits/711ed1fe18ee36faec9d7d466885015fc478022d">racket/htdp pull request #251</a>)
+    </p>
+
+    <p>
+      <img src="../assets/insidious-bug.png" alt="Screenshot of the insidious bug fix" loading="lazy">
+    </p>
+
+    <p>
+      Given the seriousness of the issue, it’s no surprise that the core team swooped in immediately with the
+      <a href="https://github.com/racket/htdp/pull/251#event-21747567009">merge</a>. This must be what it feels like to set up LeBron for a dunk:
+    </p>
+
+    <p>
+      <img src="../assets/slam-dunk.png" alt="Screenshot of the merge" loading="lazy">
+    </p>
+
+
+    <p>
+      Naturally, emboldened by my success, I immediately ventured to the bleeding edge of the Racket ecosystem and
+      <a href="https://github.com/racket/rhombus/pull/743/commits/3e4b5448883655ae092c32e0e04561745f408efe">contributed</a> to Rhombus. Boom.
+      <a href="https://github.com/racket/rhombus/pull/743#issuecomment-3692790984">Merged</a>. Still hot.
+    </p>
+
+    <p>
+      <img src="../assets/still-hot.png" alt="Screenshot of the Rhombus merge" loading="lazy">
+    </p>
+
+    <p>
+      All kidding aside, <em>How to Design Programs</em> is such a high-quality resource that it made me feel guilty for just consuming it.
+      It compelled me to try to contribute to the Racket community, even if my contributions so far amount to little more than spell-check.
+      I expect my core contributor badge any day now.
+    </p>
+
+    <p>
+      <a href="../til.html">← All TILs</a> ·
+      <a href="../">← Back home</a>
+      <br>
+      <small><a href="https://buymeacoffee.com/beasthacker" rel="noopener">Buy me a coffee →</a></small>
+    </p>
+  </body>
+</html>
