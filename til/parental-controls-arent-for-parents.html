@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="I found a stranger texting my 12-year-old on a 'kid-safe' Gabb phone. Parental controls are broken.">
+
+    <meta property="og:title" content="TIL: Parental controls aren't for parents">
+    <meta property="og:description" content="I found a stranger texting my 12-year-old on a 'kid-safe' Gabb phone. Parental controls are broken.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://beasthacker.com/til/parental-controls-arent-for-parents.html">
+    <meta property="og:image" content="https://beasthacker.com/assets/og-parental-controls.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://beasthacker.com/assets/og-parental-controls.png">
+
+    <title>TIL: Parental controls aren't for parents – Beast Hacker</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <script data-goatcounter="https://beasthacker.goatcounter.com/count"
+            async src="https://gc.zgo.at/count.js"></script>
+  </head>
+
+  <body>
+    <h1>TIL: Parental controls aren't for parents</h1>
+    <p><time datetime="2026-01-02">January 2, 2026</time></p>
+
+    <hr>
+
+    <p>
+      A few days ago, I found that a grown man had been texting my twelve-year-old 
+      son on his "kid-safe" Gabb phone. The man got my son's number through a 
+      children's book chat on an app called GroupMe. Thankfully my wife and I 
+      discovered the situation and intervened before anything bad happened; but 
+      still it was sickening to discover that on Christmas morning, while our 
+      family was unwrapping presents next to the tree, some creep had been texting 
+      my son: "What did you get? Send pictures."
+    </p>
+
+    <p>
+      How could we have let this happen? How could we be such careless parents?
+    </p>
+
+    <p>
+      But wait . . . hadn't we done what we were supposed to do? We bought the 
+      "kid-safe" phone. And we confirmed GroupMe was on the 
+      <a href="https://gabb.com/app-guide/">Gabb "approved apps" list</a>, which, 
+      as I understand it, offers "no social media or high-risk options." We 
+      did the safe things, right?
+    </p>
+
+    <p>
+      Maybe not. Turns out Gabb's own blog appears to include GroupMe on a list of 
+      <a href="https://gabb.com/blog/dangerous-chat-features/">seven apps with 
+        dangerous chat features</a>, describing it as an app that "opens the 
+        door to potential dangers." We were apparently supposed to find that 
+        warning ourselves, somewhere among Gabb's 572 blog posts:
+    </p>
+
+<pre><code>$ curl -s \
+  https://gabb.com/post-sitemap.xml \
+  | grep -oE 'https://gabb\.com/blog/[^&lt;]+' \
+  | sort -u \
+  | wc -l \
+  | xargs -I{} echo "{} blog posts as of $(date '+%B %d, %Y')"
+
+572 blog posts as of January 02, 2026</code></pre>
+
+    <p>
+      But if GroupMe "opens the door" to danger, why did Gabb put it on their "approved 
+      apps" list? When I revisited the site, I noticed a small message beneath 
+      GroupMe mentioning Communication with Strangers. I hovered over it with 
+      my mouse pointer, and a tooltip appeared: "Allows contact and communication with 
+      people the child may not know."
+    </p>
+
+    <p>
+      So it allows communication with strangers, but it's not "high-risk?" The 
+      approved list isn't looking so safe. The approved list is apparently a 
+      catalog of risks I'm supposed to decipher by filtering through 838 apps 
+      and hovering my mouse pointer around to see tooltips:
+    </p>
+
+<pre><code>$ for cat in \
+  existing_apps \
+  unapproved_apps \
+  unmet_criteria_apps \
+  music_apps; do
+  count=$(curl -s "https://gabb.com/app-guide/" \
+    | grep -o "${cat} = \[.*\]" \
+    | head -1 \
+    | sed "s/${cat} = \[//" \
+    | sed "s/\]//" \
+    | tr ',' '\n' \
+    | sed "s/'//g" \
+    | sed 's/^ *//' \
+    | sort -u \
+    | wc -l \
+    | tr -d ' ')
+  echo "$count $cat"
+done &amp;&amp; echo "...as of $(date '+%B %d, %Y')"
+
+586 existing_apps
+60 unapproved_apps
+170 unmet_criteria_apps
+22 music_apps
+...as of January 02, 2026</code></pre>
+
+    <p>
+      Whatever the reason for this complexity, I don't feel in control.
+    </p>
+
+    <p>
+      And Gabb isn't alone in making me feel this way. It seems like many companies 
+      selling tech to families operate in the same way: market safety, deliver 
+      complexity, and leave parents to figure it out.
+    </p>
+
+
+    <p>
+      Take the Nintendo Switch my son unwrapped between those creepy texts. To 
+      set it up, I had to:
+    </p>
+
+    <ol>
+      <li>Connect the console to the internet</li>
+      <li>Download the Nintendo Switch Parental Controls app to my phone</li>
+      <li>Create a Nintendo Account for myself</li>
+      <li>Link my credit card and be charged $0.50 to verify parental consent</li>
+      <li>Set up parental controls from the app on my phone</li>
+      <li>Sync the parental controls app to the Nintendo Switch</li>
+      <li>Set up a security PIN on the Nintendo Switch</li>
+      <li>Create a Nintendo Account for my son</li>
+      <li>Sync my son's Nintendo Account to the Nintendo Switch</li>
+      <li>Discover that half the controls live in the phone app and the other 
+        half live on Nintendo's website, because of course they do</li>
+      <li>Log into Nintendo's website to finish the job . . . </li>
+    </ol>
+
+    <p>
+      Only to discover that there's no clear option to block internet access, 
+      no clear way to disable downloads from the Nintendo eShop, and no easy 
+      way to make this thing function like an old-school Game Boy and just let a 
+      kid have fun with a game cartridge. But that's just nostalgia talking. 
+      Nobody wants that anymore. Apparently.
+    </p>
+
+    <p>
+      Because next comes Minecraft. Ah, Minecraft. The game every middle-schooler 
+      on earth apparently needs to survive. To let my son play with his friends:
+    </p>
+
+    <ol start="12">
+      <li>Create a Microsoft account for myself</li>
+      <li>Create an email address for my son</li>
+      <li>Create a Microsoft account for my son</li>
+      <li>Set up a gamertag for my son on account.xbox.com</li>
+      <li>Configure parental controls in Microsoft Family Safety</li>
+      <li>Configure more parental controls on xbox.com</li>
+    </ol>
+
+    <p>
+      Now, I did my best to configure these settings. I really did. But xbox.com 
+      includes twenty-nine confusingly overlapping settings related to chat, 
+      friends, and communication. Twenty-nine.
+    </p>
+
+    <p>
+      And when I finally—<em>finally</em>—tried to test online play, Minecraft 
+      told me I would need to loosen the parental controls (it did not say 
+      which) <em>and</em> create a Nintendo Switch Online account for my son.
+    </p>
+
+    <p>
+      Nintendo Switch Online (not really another account, mind you, but a 
+      <em>membership</em>) involves a recurring fee. It also unlocks access to 
+      the Nintendo eShop, which I cannot disable. I can set his spending limit 
+      to zero, sure. But I can't block free downloads. So to let my son play 
+      online Minecraft with his friends, I have to open him up to an unrelated store full of content 
+      I can't possibly evaluate. That's the deal. Take it or leave it.
+    </p>
+
+    <p>
+      I assume some marketing person at Nintendo, probably sitting in a 
+      conference room in Kyoto, surrounded by whiteboards covered in arrows and 
+      cartoon stick figures, has this entire process mapped out as a "customer 
+      journey." And by Step 17, the journey is supposed to be over. You're 
+      supposed to be so beaten down, so utterly depleted of will, that you just 
+      cave. You sign up for Nintendo Online. You disable a bunch of parental 
+      controls you don't really understand. You let your kid play his damn game. 
+      You become a good customer.
+    </p>
+
+    <p>
+      But I didn't cave. Instead, somewhere on the threshold of Customer Journey Step 18, 
+      I found myself gripping the Switch with both hands and imagining, quite 
+      vividly, what it would feel like to lift the Switch up, and bring it down
+      over my knee. I could almost hear the crack. Could almost see that OLED
+      display splintering into a thousand pieces. The little Joy-Cons skittering
+      across the floor. My son's face. My wife's face. The stunned silence.
+    </p>
+
+    <p>
+      I did not break the Switch.
+    </p>
+
+    <p>
+      What I did was announce, in a voice louder than 
+      necessary, that <em>nobody</em> was to ask me about anything 
+      Minecraft-related on the Nintendo Switch for a minimum of two weeks. My 
+      son could play Zelda: Breath of the Wild instead, which, thank you, 
+      developers, thank you from the bottom of my heart, doesn't appear to 
+      involve any mandatory online anything whatsoever.
+    </p>
+
+    <p>
+      Here's what I want: an off switch. A single setting that says "this 
+      child cannot go online, communicate with strangers, spend money, or 
+      download anything without my explicit permission." Instead I get a 
+      maze, complex enough that when something goes wrong, I'm at fault for a
+      tooltip I didn't hover over, a blog post I didn't read, a submenu I didn't 
+      find. Maybe that's by design. Maybe it's neglect. I don't know.
+    </p>
+
+    <p>
+      What I know is this. My son just wants to play video games and talk to his
+      friends. I just want to keep him safe. Somewhere between those 
+      two things, I'm supposed to become an expert in the convoluted parental 
+      control schemes of Gabb, Nintendo, Microsoft, and Xbox, while a stranger's 
+      Christmas morning texts sit in my son's phone history.
+    </p>
+    
+    <p>
+      Parental controls shouldn't be this hard.
+    </p>
+
+    <p>
+      <a href="../til.html">← All TILs</a> ·
+      <a href="../">← Back home</a>
+      <br>
+      <small><a href="https://buymeacoffee.com/beasthacker" rel="noopener">Buy 
+        me a coffee →</a></small>
+    </p>
+  </body>
+</html>
