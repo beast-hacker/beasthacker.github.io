@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>JavaScript — Hello World Loop — Beast Hacker</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    </head>
+
+    <body>
+        <h1>JavaScript</h1>
+
+        <p>Write a "Hello, World!" program in JavaScript with:
+            <br> &nbsp;&nbsp;&nbsp;&nbsp;
+            <code>console.log("Hello, World!");</code>
+        </p>
+
+        <p>When you're ready to move on, say <code>Hello, Racket!</code></p>
+
+        <div>
+            <textarea id="terminal"></textarea>
+            <button id="runButton">Run</button>
+            <br>
+            <br>
+            <div id="output"></div>   
+        </div>
+
+        <script>
+            const terminal = document.getElementById("terminal")
+
+            const runButton = document.getElementById("runButton")
+
+            const output = document.getElementById("output")
+
+            runButton.addEventListener("click", function() {
+                if (terminal.value === 'console.log("Hello, World!");') {
+                    output.textContent = "Hello, World!"
+                }
+                else if (terminal.value === 'console.log("Hello, Racket!");') {
+                    window.location.href = "racket.html"
+                }
+                else {
+                    output.textContent = "Try again"
+                }
+            })
+        </script>
+    </body>
+</html>

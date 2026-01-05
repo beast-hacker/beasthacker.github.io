@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Python — Hello World Loop — Beast Hacker</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+        <style>
+            #terminal * {
+                all: unset;
+            }
+            #window {
+                width: 600px;
+                border-radius: 6px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+            #titlebar {
+                background: #2d2d2d;
+                padding: 8px 12px;
+                display: flex;
+                align-items: center;
+            }
+            .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+            .red { background: #ff5f56; }
+            .yellow { background: #ffbd2e; }
+            .green { background: #27c93f; }
+            #title {
+                color: #a5a5a5;
+                font-size: 13px;
+                font-family: -apple-system, sans-serif;
+                margin-left: auto;
+                margin-right: auto;
+                padding-right: 52px;
+            }
+            #terminal {
+                font-family: monospace;
+                font-size: 14px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                padding: 10px;
+                line-height: 1.4;
+                height: 320px;
+            }
+            #command {
+                border: none;
+                background: transparent;
+                color: #cccccc;
+                font-family: inherit;
+                font-size: inherit;
+                width:90%;
+                outline: none;
+                padding: 0;
+                margin: 0;
+            }
+            #input-line {
+                display: flex;
+                align-items: baseline;
+            }
+            #prompt {
+                white-space: pre;
+            }
+            #history div {
+                display: block;
+                white-space: pre-wrap;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>Python</h1>
+
+        <p>Write a "Hello, World!" program in Python with:
+            <br> &nbsp;&nbsp;&nbsp;&nbsp;
+            <code>print("Hello, World!")</code>
+        </p>
+
+        <p>When you're ready to move on, say <code>Hello, JavaScript!</code></p>
+
+        <div id="window">
+            <div id="titlebar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span id="title">Python</span>
+            </div>
+            <div id="terminal">
+                <div id="history"></div>
+                <div id="input-line">
+                    <span id="prompt">>>> </span>
+                    <input id="command" type="text">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const history = document.getElementById("history")
+            const command = document.getElementById("command")
+            const prompt = document.getElementById("prompt")
+
+            command.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    const input = command.value
+                    command.value = ""
+
+                    const commandLine = document.createElement("div")
+                    commandLine.textContent = ">>> " + input
+                    history.appendChild(commandLine)
+
+                    const match = input.match(/^print\(["'](.*)["']\)$/)
+                    if (match) {
+                        const outputLine = document.createElement("div")
+                        outputLine.textContent = match[1]
+                        history.appendChild(outputLine)
+
+                        if (match[1].toLowerCase() === "hello, javascript!") {
+                            window.location.href = "javascript.html"
+                        }    
+                    }
+                }
+            })
+        </script>        
+    </body>
+</html>
