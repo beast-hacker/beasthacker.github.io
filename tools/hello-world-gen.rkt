@@ -11,19 +11,17 @@
             'prompt     "> "
             'syntax     "console.log"
             'next-lang  "Racket"
-            'filename   "JavaScript.html")
+            'filename   "javascript.html")
     (hash   'name       "Racket"
             'prompt     "> "
             'syntax     "displayln"
             'next-lang  "Elixir"
             'filename   "racket.html")
     (hash   'name       "Elixir"
-            'promopt    "iex> "
+            'prompt    "iex> "
             'syntax     "IO.puts"
             'next-lang  "Python"
             'filename   "elixir.html")))
-
-; Test: print all the language names
 
 (define (generate-html lang)
   (string-append
@@ -42,4 +40,12 @@
 
     "</html>\n"))
 
-    (displayln (generate-html (first languages)))
+; Write HTML file for one language
+(define (write-html-file lang)
+  (define filename (string-append "../hello-world/test/" (hash-ref lang 'filename)))
+  (display-to-file (generate-html lang) filename #:exists 'replace))
+
+; Generate all HTML files
+(for ([lang languages])
+  (write-html-file lang)
+  (displayln (string-append "Generated " (hash-ref lang 'filename))))
